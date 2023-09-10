@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+</head>
+<body>
+  <div fxLayoutAlign="center center" fxFlexFill class="main-dev">
+    <mat-card fxFlex="25">
+      <mat-toolbar class="custom-toolbar">Login Page</mat-toolbar>
+      <form fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="formGroup" (ngSubmit)="loginProcess()">
+        <mat-form-field >
+          <input matInput placeholder="email" formControlName="email">
+        </mat-form-field>
+        
+        <mat-form-field >
+          <input matInput type="password" placeholder="Password" formControlName="password">
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Login</button>
+        
+        <div class="button-group">
+          <button mat-raised-button color="primary" routerLink="/register">Register</button>
+        </div>
+      </form>
+      
+    </mat-card>
+  </div>
+  
+</body>
+</html>

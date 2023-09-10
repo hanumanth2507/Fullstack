@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee details</title>
+</head>
+<body>
+  <!-- Paginator -->
+<mat-paginator [pageSizeOptions]="[20, 30, 40, 50]" showFirstLastButtons>
+</mat-paginator>
+<dev fxLayoutAlign="center" fxFlexFill class="main-dev">
+  <mat-card fxFlex="80">
+<!-- Table -->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+  <!-- Columns definition -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef class="header"> No. </th>
+    <td mat-cell width="100px" *matCellDef="let element; let i = index">
+      {{ calculatePosition(i) }}
+    </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="employee_code">
+    <th mat-header-cell *matHeaderCellDef class="header"> Employee code </th>
+    <td mat-cell *matCellDef="let element"> {{element.employee_code}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="full_name">
+    <th mat-header-cell *matHeaderCellDef class="header"> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.full_name}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="designation">
+    <th mat-header-cell *matHeaderCellDef class="header"> Designation </th>
+    <td mat-cell *matCellDef="let element"> {{element.designation}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="available_status">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class="header">
+      Available Status
+      <mat-form-field appearance="fill" class="filter-dropdown">
+        <mat-label>Filter</mat-label>
+        <mat-select (selectionChange)="applyFilter($event.value)">
+          <mat-option value="">All</mat-option>
+          <mat-option value="Active">Active</mat-option>
+          <mat-option value="Inactive">Inactive</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </th>
+    <td mat-cell *matCellDef="let element"> {{ element.available_status }} </td>
+  </ng-container>
+  
+  <!-- Header rows -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  
+  <!-- Data rows -->
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</mat-card>
+</dev>
+</body>
+</html>

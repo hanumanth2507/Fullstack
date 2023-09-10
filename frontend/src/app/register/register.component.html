@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+</head>
+<body>
+  
+  <div fxLayoutAlign="center center" fxFlexFill class="main-dev">
+    <mat-card fxFlex="35">
+      <mat-toolbar class="custom-toolbar">Registration Page</mat-toolbar>
+      <form fxLayoutAlign="stretch" fxLayout="column" class="register-form" [formGroup]="formGroup" (ngSubmit)="registerProcess()">
+        <mat-form-field >
+          <input matInput placeholder="employeeID" formControlName="employeeCode">
+        </mat-form-field>
+        
+        <mat-form-field >
+          <input matInput placeholder="full name" formControlName="fullName">
+        </mat-form-field>
+        
+        <mat-form-field >
+          <input matInput placeholder="designation" formControlName="designation">
+        </mat-form-field>
+        
+        <mat-form-field >
+          <input matInput placeholder="email" formControlName="email">
+        </mat-form-field>
+        
+        <mat-form-field >
+          <input matInput placeholder="mobile number" formControlName="mobileNumber">
+        </mat-form-field>
+        
+        <mat-form-field >
+          <input matInput type="password" placeholder="Password" formControlName="loginPassword">
+        </mat-form-field>
+        
+        <mat-form-field>
+          <mat-label>date of birth</mat-label>
+          <input matInput [matDatepicker]="dobPicker" formControlName="dateOfBirth">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="dobPicker"></mat-datepicker-toggle>
+          <mat-datepicker #dobPicker></mat-datepicker>
+        </mat-form-field>
+        
+        <mat-form-field>
+          <mat-label>date of joining</mat-label>
+          <input matInput [matDatepicker]="dojPicker" formControlName="dateOfJoining">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="dojPicker"></mat-datepicker-toggle>
+          <mat-datepicker #dojPicker></mat-datepicker>
+        </mat-form-field>
+        
+        <mat-form-field>
+          <mat-label>availability status</mat-label>
+          <mat-select formControlName="availableStatus" color="primary">
+            <mat-option *ngFor="let status of statuses" [value]="status.value">
+              {{status.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+        
+        <button mat-raised-button color="primary" type="submit">Register</button>
+  
+        <div class="button-group">
+          <button mat-raised-button color="primary" routerLink="/login">Login</button>
+        </div>
+      </form>
+      
+    </mat-card>
+  </div>
+
+</body>
+</html>

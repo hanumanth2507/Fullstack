@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit</title>
+</head>
+<body>
+  
+<div fxLayoutAlign="center center" fxFlexFill class="main-dev">
+  <mat-card fxFlex="35">
+    <mat-toolbar class="custom-toolbar">Edit details</mat-toolbar>
+    <form fxLayoutAlign="stretch" fxLayout="column" class="edit-form" [formGroup]="formGroup" (ngSubmit)="editProcess()">
+
+      <mat-form-field >
+        <input matInput placeholder="full name" formControlName="fullName">
+      </mat-form-field>
+      
+      <mat-form-field >
+        <input matInput placeholder="designation" formControlName="designation">
+      </mat-form-field>
+      
+      <mat-form-field >
+        <input matInput placeholder="mobile number" formControlName="mobileNumber">
+      </mat-form-field>
+      
+      <mat-form-field>
+        <mat-label>availability status</mat-label>
+        <mat-select formControlName="availableStatus">
+          <mat-option *ngFor="let status of statuses" [value]="status.value">
+            {{status.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+    
+  </mat-card>
+</div>
+
+</body>
+</html>
